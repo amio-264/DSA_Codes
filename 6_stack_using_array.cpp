@@ -10,52 +10,46 @@ public:
     }
     void pop()
     {
-        if (!v.empty())
-        {
-            v.pop_back();
-        }
+        if (v.empty())
+            cout << "Stack is empty";
         else
-        {
-            cout << "Stack is empty! Cannot pop.\n";
-        }
+            v.pop_back();
     }
     int top()
     {
-        return v.back();
-    }
-    int size()
-    {
-        return v.size();
-    }
-    bool empty()
-    {
-        return v.empty();
+        if (!v.empty())
+            return v.back();
+        else
+            cout << "Stack Empty.";
+        return -1;
     }
     void display()
     {
-        if (v.empty())
+        if (!v.empty())
         {
-            cout << "Stack is empty!\n";
-            return;
+            cout << "Stack: ";
+            for (int i = v.size() - 1; i >= 0; i--)
+            {
+                cout << v[i] << " ";
+            }
         }
-        cout << "Stack elements (top to bottom): ";
-        for (int i = v.size() - 1; i >= 0; i--)
+        else
         {
-            cout << v[i] << " ";
+            cout << "Stack is empty.";
         }
-        cout << endl;
     }
 };
 int main()
 {
-    Stack st;
-    st.push(10);
-    st.push(20);
-    st.push(30);
-    cout << "After pushing:\n";
-    st.display();
-    st.pop();
-    cout << "After popping:\n";
-    st.display();
+    Stack s;
+    s.push(0);
+    s.push(4);
+    s.push(6);
+    cout << "Top: " << s.top() << endl;
+    cout << "After pushing: \n";
+    s.display();
+    s.pop();
+    cout << "\nAfter popping: \n";
+    s.display();
     return 0;
 }
