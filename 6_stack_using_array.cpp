@@ -25,18 +25,15 @@ public:
     }
     void display()
     {
-        if (!v.empty())
+        if (v.empty())
         {
-            cout << "Stack: ";
-            for (int i = v.size() - 1; i >= 0; i--)
-            {
-                cout << v[i] << " ";
-            }
+            cout << "Stack is empty";
+            return;
         }
-        else
-        {
-            cout << "Stack is empty.";
-        }
+        cout << "Stack elements: ";
+        for (int x : v)
+            cout << x << " ";
+        cout << endl;
     }
 };
 int main()
