@@ -10,7 +10,14 @@ public:
     }
     void pop()
     {
-        v.pop_back();
+        if (!v.empty())
+        {
+            v.pop_back();
+        }
+        else
+        {
+            cout << "Stack is empty! Cannot pop.\n";
+        }
     }
     int top()
     {
@@ -24,22 +31,31 @@ public:
     {
         return v.empty();
     }
+    void display()
+    {
+        if (v.empty())
+        {
+            cout << "Stack is empty!\n";
+            return;
+        }
+        cout << "Stack elements (top to bottom): ";
+        for (int i = v.size() - 1; i >= 0; i--)
+        {
+            cout << v[i] << " ";
+        }
+        cout << endl;
+    }
 };
 int main()
 {
     Stack st;
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        st.push(x);
-    }
-    while (!st.empty())
-    {
-        cout << st.top() << " ";
-        st.pop();
-    }
+    st.push(10);
+    st.push(20);
+    st.push(30);
+    cout << "After pushing:\n";
+    st.display();
+    st.pop();
+    cout << "After popping:\n";
+    st.display();
     return 0;
 }
